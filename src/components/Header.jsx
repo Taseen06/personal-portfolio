@@ -1,76 +1,111 @@
-import React, { useState } from 'react';
-import { MoreHorizontal, X, Instagram, Github, Linkedin } from 'lucide-react';
+import { useState } from 'react';
+import { FaGithub, FaLinkedin, FaInstagram, FaTwitter, FaEllipsisH, FaTimes } from 'react-icons/fa';
 
 const Header = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const toggleMenu = () => setIsOpen(!isOpen);
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+    // Prevent background scrolling when menu is active
+    if (!isMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+  };
 
   return (
     <>
-      {/* --- Main Navigation Bar --- */}
-      <header className="bg-[#112240] text-white px-6 md:px-16 py-3 flex justify-between items-center fixed w-full top-0 z-40 shadow-xl">
+      {/* --- Sticky Navigation Bar --- */}
+      <header className="sticky top-0 z-50 bg-navy text-white px-10 py-6 shadow-md flex justify-between items-center">
+      <div className="relative group">
+      <h1 className="text-4xl md:text-5xl font-signature px-2 text-white pb-1 leading-none ">
+            Toufiqur Rahman Tasin
+          </h1>
+</div>
         
-        {/* Fancy Signature Logo (Left Aligned) */}
-        <div 
-          className="text-3xl md:text-5xl tracking-wider cursor-pointer select-none py-2"
-          style={{ 
-            fontFamily: "'Mrs Saint Delafield', cursive",
-            textShadow: "0px 2px 4px rgba(0,0,0,0.3)" 
-          }}
-        >
-          Toufiqur Rahman Tasin
-        </div>
-
-        {/* Right Side Group */}
-        <div className="flex items-center gap-8">
-          {/* Social Icons with subtle hover glow */}
-          <div className="hidden sm:flex items-center gap-6">
-            <Instagram size={19} className="hover:text-pink-400 cursor-pointer transition-all duration-300 hover:-translate-y-1" />
-            <Github size={19} className="hover:text-gray-400 cursor-pointer transition-all duration-300 hover:-translate-y-1" />
-            <Linkedin size={19} className="hover:text-blue-400 cursor-pointer transition-all duration-300 hover:-translate-y-1" />
+        <nav className="flex items-center gap-6">
+          {/* Social Icons (Desktop Only) */}
+          <div className="hidden md:flex gap-6 text-2xl">
+            <a href="https://github.com" target="_blank" rel="noreferrer" className="hover:text-cyan transition-colors"><FaGithub /></a>
+            <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="hover:text-cyan transition-colors"><FaLinkedin /></a>
+            <a href="https://instagram.com" target="_blank" rel="noreferrer" className="hover:text-cyan transition-colors"><FaInstagram /></a>
+            <a href="https://twitter.com" target="_blank" rel="noreferrer" className="hover:text-cyan transition-colors"><FaTwitter /></a>
           </div>
 
-          {/* More Icon */}
+          {/* Menu Toggle Trigger */}
           <button 
-            onClick={toggleMenu} 
-            className="hover:bg-white/10 p-2 rounded-full transition-all duration-300"
+            onClick={toggleMenu}
+            className="text-2xl hover:text-cyan transition-all p-2 focus:outline-none"
           >
-            <MoreHorizontal size={30} />
+            <FaEllipsisH />
           </button>
-        </div>
+        </nav>
       </header>
 
       {/* --- Full Screen Overlay Menu --- */}
       <div 
-        className={`fixed inset-0 bg-white z-50 transition-all duration-700 ease-[cubic-bezier(0.19,1,0.22,1)] flex flex-col ${
-          isOpen ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-full pointer-events-none'
+        className={`fixed inset-0 z-[100] bg-white transition-all duration-500 ease-in-out ${
+          isMenuOpen ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'
         }`}
       >
-        <div className="flex justify-between p-10 items-center text-black">
-          <span className="font-black tracking-[0.3em] text-xs uppercase opacity-50">TASIN</span>
-          <button onClick={toggleMenu} className="hover:rotate-180 transition-transform duration-500">
-            <X size={40} strokeWidth={1} />
+        {/* Top Bar inside Overlay */}
+        <div className="flex justify-between items-center px-8 py-4">
+          <span className="font-bold text-xl tracking-tighter text-navy uppercase">Tasin</span>
+          <button 
+            onClick={toggleMenu} 
+            className="text-3xl text-navy hover:rotate-90 transition-transform duration-300 p-2"
+          >
+            <FaTimes />
           </button>
         </div>
 
-        <nav className="flex flex-col items-center justify-center flex-grow space-y-12">
-          {['Home', 'Portfolio', 'About', 'Contact'].map((item) => (
-            <a 
-              key={item} 
-              href={`#${item.toLowerCase()}`}
-              onClick={toggleMenu}
-              className="group relative text-5xl md:text-8xl font-serif text-gray-900 transition-all"
-            >
-              <span className="relative z-10 group-hover:italic">{item}</span>
-              {/* Animated underline effect */}
-              <span className="absolute bottom-0 left-0 w-0 h-1 bg-black transition-all duration-500 group-hover:w-full"></span>
-            </a>
-          ))}
-        </nav>
+        {/* Vertical Navigation Links */}
+        <div className="flex flex-col items-center justify-center h-[75vh] gap-4 md:gap-8">
+          <div className={`transition-all duration-700 delay-100 ${isMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
+            <MenuLink text="Home" onClick={toggleMenu} />
+          </div>
+          <div className={`transition-all duration-700 delay-200 ${isMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
+            <MenuLink text="About" onClick={toggleMenu} />
+          </div>
+          <div className={`transition-all duration-700 delay-300 ${isMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
+            <MenuLink text="Projects" onClick={toggleMenu} />
+          </div>
+          <div className={`transition-all duration-700 delay-400 ${isMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
+            <MenuLink text="Education" onClick={toggleMenu} />
+          </div>          
+          <div className={`transition-all duration-700 delay-500 ${isMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
+            <MenuLink text="Contact" onClick={toggleMenu} />
+          </div>
+        </div>
+
+        {/* Overlay Footer Branding */}
+        <div className="absolute bottom-10 w-full px-10 flex flex-col md:flex-row justify-between items-center text-sm text-gray-400 font-medium">
+          <div className="flex gap-6 mb-4 md:mb-0">
+            <a href="mailto:your@email.com" className="hover:text-sky-400 transition-colors">E-mail</a>
+            <a href="#" className="hover:text-sky-400 transition-colors">Github</a>
+            <a href="#" className="hover:text-sky-400 transition-colors">Twitter</a>
+          </div>
+          <div className="tracking-[0.3em] uppercase text-[10px]">
+            copyright — TOUFIQUR RAHMAN TASIN
+          </div>
+        </div>
       </div>
     </>
   );
 };
+
+/* Reusable Link Component 
+  Note: href is dynamically generated to match section IDs in App.jsx
+*/
+const MenuLink = ({ text, onClick }) => (
+  <a 
+    href={`#${text.toLowerCase()}`} 
+    onClick={onClick}
+    className="text-5xl md:text-8xl font-bold text-navy hover:text-sky-400 hover:italic hover:tracking-widest transition-all duration-300 cursor-pointer block text-center"
+  >
+    {text}
+  </a>
+);
 
 export default Header;

@@ -2,4 +2,83 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Optional: Add a signature-style font from Google Fonts in your index.html */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply font-sans text-navy bg-white;
+}
+@layer utilities {
+  .animate-bounce-slow {
+    animation: floating 3s ease-in-out infinite;
+  }
+
+  @keyframes floating {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap');
+
+:root {
+  --navy: #030712;
+  --cyan: #06b6d4;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--navy);
+  color: white;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Premium Mesh Gradient Animation */
+@keyframes mesh-pulse {
+  0% { transform: scale(1) translate(0, 0); }
+  50% { transform: scale(1.2) translate(10%, 10%); }
+  100% { transform: scale(1) translate(0, 0); }
+}
+
+.mesh-orb {
+  animation: mesh-pulse 10s ease-in-out infinite;
+  filter: blur(100px);
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&family=JetBrains+Mono&display=swap');
+
+:root {
+  --navy-dark: #020617;
+  --navy-light: #0f172a;
+}
+
+body {
+  background-color: var(--navy-dark);
+  color: #f8fafc;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  scroll-behavior: smooth;
+}
+
+.font-mono {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* Subtle glowing border for premium cards */
+.glass-border {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(12px);
+}
+
+.glass-border:hover {
+  border: 1px solid rgba(0, 212, 255, 0.3);
+  box-shadow: 0 0 30px rgba(0, 212, 255, 0.05);
+}
