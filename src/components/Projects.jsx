@@ -38,7 +38,7 @@ const Projects = () => {
     Want to see the source code?
   </h3>
   <a 
-    href="https://github.com/your-username" 
+    href="https://github.com/Taseen06?tab=repositories" 
     target="_blank" 
     rel="noreferrer"
     className="inline-flex items-center gap-4 px-10 py-4 bg-navy text-white rounded-2xl font-bold text-lg hover:bg-cyan hover:text-navy hover:shadow-[0_20px_40px_rgba(0,212,255,0.3)] hover:-translate-y-1 transition-all duration-500 group"

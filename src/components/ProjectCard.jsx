@@ -17,15 +17,6 @@ const ProjectCard = ({ project }) => {
       </div>
 
       <div className="flex gap-4 items-center">
-        {/* Demo Link */}
-        <a 
-          href={project.demoLink} 
-          target="_blank" 
-          rel="noopener noreferrer"
-          className="flex items-center gap-2 text-teal-600 font-bold hover:text-navy transition-colors"
-        >
-          → DEMO <FaExternalLinkAlt size={12}/>
-        </a>
 
         {/* GitHub Link */}
         <a 

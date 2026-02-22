@@ -1,20 +1,20 @@
 export const education = [
   {
     school: "Metropolitan University",
-    degree: "B.Sc.[engg] in Computer Science",
-    grade: "CGPA: 3.4/4.0",
+    degree: "B.Sc. Engineering in Computer Science and Engineering [CSE]",
+    grade: "CGPA: 3.4 / 4.0",
     year: "2023 - 2026"
   },
   {
-    school: "MC College",
+    school: " Murari Chand (MC) College",
     degree: "Higher Secondary Certificate",
-    grade: "GPA: 5.0/5.0",
+    grade: "GPA: 5.0 / 5.0",
     year: "2020"
   },
   {
-    school: "International High School",
+    school: "Sylhet Government Pilot High School",
     degree: "Secondary  School Certificate",
-    grade: "GPA: 5.0/5.0",
+    grade: "GPA: 5.0 / 5.0",
     year: "2018"
   }
 ];

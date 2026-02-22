@@ -27,10 +27,10 @@ const Header = () => {
         <nav className="flex items-center gap-6">
           {/* Social Icons (Desktop Only) */}
           <div className="hidden md:flex gap-6 text-2xl">
-            <a href="https://github.com" target="_blank" rel="noreferrer" className="hover:text-cyan transition-colors"><FaGithub /></a>
-            <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="hover:text-cyan transition-colors"><FaLinkedin /></a>
-            <a href="https://instagram.com" target="_blank" rel="noreferrer" className="hover:text-cyan transition-colors"><FaInstagram /></a>
-            <a href="https://twitter.com" target="_blank" rel="noreferrer" className="hover:text-cyan transition-colors"><FaTwitter /></a>
+            <a href="https://github.com/Taseen06" target="_blank" rel="noreferrer" className="hover:text-cyan transition-colors"><FaGithub /></a>
+            <a href="https://www.linkedin.com/in/taseen06" target="_blank" rel="noreferrer" className="hover:text-cyan transition-colors"><FaLinkedin /></a>
+            <a href="https://www.instagram.com/taseen06/" target="_blank" rel="noreferrer" className="hover:text-cyan transition-colors"><FaInstagram /></a>
+            <a href="https://twitter.com/Toufiqur99" target="_blank" rel="noreferrer" className="hover:text-cyan transition-colors"><FaTwitter /></a>
           </div>
 
           {/* Menu Toggle Trigger */}
@@ -50,8 +50,10 @@ const Header = () => {
         }`}
       >
         {/* Top Bar inside Overlay */}
-        <div className="flex justify-between items-center px-8 py-4">
-          <span className="font-bold text-xl tracking-tighter text-navy uppercase">Tasin</span>
+        <div className="flex justify-between items-center px-10 py-6 ">
+           <h1 className="text-4xl md:text-5xl font-signature px-2 text-black pb-1 leading-none ">
+            Toufiqur Rahman Tasin
+          </h1>
           <button 
             onClick={toggleMenu} 
             className="text-3xl text-navy hover:rotate-90 transition-transform duration-300 p-2"
@@ -79,17 +81,7 @@ const Header = () => {
           </div>
         </div>
 
-        {/* Overlay Footer Branding */}
-        <div className="absolute bottom-10 w-full px-10 flex flex-col md:flex-row justify-between items-center text-sm text-gray-400 font-medium">
-          <div className="flex gap-6 mb-4 md:mb-0">
-            <a href="mailto:your@email.com" className="hover:text-sky-400 transition-colors">E-mail</a>
-            <a href="#" className="hover:text-sky-400 transition-colors">Github</a>
-            <a href="#" className="hover:text-sky-400 transition-colors">Twitter</a>
-          </div>
-          <div className="tracking-[0.3em] uppercase text-[10px]">
-            copyright — TOUFIQUR RAHMAN TASIN
-          </div>
-        </div>
+       
       </div>
     </>
   );
